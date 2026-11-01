@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>मेरा स्मार्ट कैलकुलेटर</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eaf2ff;
+      text-align: center;
+      padding: 25px;
+    }
+
+    .box {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      max-width: 350px;
+      margin: auto;
+      box-shadow: 0 4px 15px #bbbbbb;
+    }
+
+    input {
+      width: 90%;
+      padding: 12px;
+      margin: 8px 0;
+      font-size: 18px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 12px;
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      background: #1769ff;
+      color: white;
+      font-size: 16px;
+    }
+
+    #result {
+      color: #1769ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>मेरा स्मार्ट कैलकुलेटर</h2>
+
+    <input id="a" type="number" placeholder="पहला नंबर">
+    <input id="b" type="number" placeholder="दूसरा नंबर">
+
+    <div>
+      <button onclick="calc('+')">जोड़ +</button>
+      <button onclick="calc('-')">घटाव −</button>
+      <button onclick="calc('*')">गुणा ×</button>
+      <button onclick="calc('/')">भाग ÷</button>
+    </div>
+
+    <h3 id="result">उत्तर यहाँ आएगा</h3>
+  </div>
+
+  <script>
+    function calc(op) {
+      let a = Number(document.getElementById("a").value);
+      let b = Number(document.getElementById("b").value);
+      let answer;
+
+      if (op === "+") answer = a + b;
+      if (op === "-") answer = a - b;
+      if (op === "*") answer = a * b;
+
+      if (op === "/") {
+        if (b === 0) {
+          document.getElementById("result").innerText =
+            "शून्य से भाग नहीं दे सकते!";
+          return;
+        }
+        answer = a / b;
+      }
+
+      document.getElementById("result").innerText =
+        "उत्तर: " + answer;
+    }
+  </script>
+</body>
+</html>
+
+  
