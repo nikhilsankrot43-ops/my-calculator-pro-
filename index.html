@@ -17,7 +17,48 @@
 <meta property="og:description" content="Free online calculator for addition, subtraction, multiplication and division.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nikhilsankrot43-ops.github.io/my-calculator-pro/">
+/* Extra Features Design */
 
+.extra-features {
+    margin-top: 20px;
+    padding: 15px;
+    background: #151b35;
+    border-radius: 15px;
+    border: 1px solid #343e70;
+}
+
+#copyAnswer {
+    width: 100%;
+    background: linear-gradient(
+        135deg,
+        #06b6d4,
+        #2563eb
+    );
+}
+
+.extra-features h2 {
+    font-size: 20px;
+    color: #55e6ff;
+    margin-top: 20px;
+}
+
+#historyList {
+    padding-left: 20px;
+    color: white;
+}
+
+#historyList li {
+    padding: 10px;
+    margin: 8px 0;
+    background: #080d22;
+    border-radius: 8px;
+    overflow-wrap: anywhere;
+}
+
+#clearHistory {
+    width: 100%;
+    margin-top: 10px;
+}
 <style>
 * {
   box-sizing: border-box;
@@ -179,7 +220,22 @@ placeholder="दूसरा नंबर डालें" inputmode="decimal">
 <div class="result" id="result">
 उत्तर यहाँ आएगा
 </div>
+<!-- New Features -->
+<div class="extra-features">
 
+    <button id="copyAnswer">
+        📋 Copy Answer
+    </button>
+
+    <h2>📜 Calculation History</h2>
+
+    <ul id="historyList"></ul>
+
+    <button id="clearHistory" class="clear">
+        Clear History
+    </button>
+
+</div>
 </section>
 
 <section class="info">
@@ -271,7 +327,70 @@ function deleteLast() {
     document.getElementById("num2").value =
       document.getElementById("num2").value.slice(0, -1);
   }
-}
+}// Copy Answer Feature
+
+document.getElementById("copyAnswer")
+.addEventListener("click", function() {
+
+    let answer = document.getElementById("result").innerText;
+
+    navigator.clipboard.writeText(answer)
+    .then(function() {
+        this.innerText = "✅ Copied!";
+    }.bind(this))
+    .catch(function() {
+        alert("Answer: " + answer);
+    });
+
+});
+
+
+// Calculation History Feature
+
+let historyList = document.getElementById("historyList");
+
+let resultBox = document.getElementById("result");
+
+let lastAnswer = "";
+
+let historyObserver = new MutationObserver(function() {
+
+    let answer = resultBox.innerText;
+
+    if (
+        answer.startsWith("उत्तर:") &&
+        answer !== lastAnswer
+    ) {
+
+        let item = document.createElement("li");
+
+        item.innerText = answer;
+
+        historyList.prepend(item);
+
+        lastAnswer = answer;
+
+    }
+
+});
+
+historyObserver.observe(resultBox, {
+    childList: true,
+    characterData: true,
+    subtree: true
+});
+
+
+// Clear History Feature
+
+document.getElementById("clearHistory")
+.addEventListener("click", function() {
+
+    historyList.innerHTML = "";
+
+    lastAnswer = "";
+
+});
 </script>
 
 </body>
