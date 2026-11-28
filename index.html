@@ -1,89 +1,279 @@
-<h1>My Calculator Pro - Online Calculator</h1>
+
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
-<title>My Calculator Pro - Free Online Calculator</title>
-<meta name=<meta name="description" content="My Calculator Pro is a free online calculator for addition, subtraction, multiplication and division.">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #eaf2ff;
-      text-align: center;
-      padding: 25px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .box {
-      background: white;
-      padding: 25px;
-      border-radius: 20px;
-      max-width: 350px;
-      margin: auto;
-      box-shadow: 0 4px 15px #bbbbbb;
-    }
+<title>CalcNova Hindi - Free Online Calculator</title>
 
-    input {
-      width: 90%;
-      padding: 12px;
-      margin: 8px 0;
-      font-size: 18px;
-      box-sizing: border-box;
-    }
+<meta name="description" content="CalcNova Hindi एक मुफ्त ऑनलाइन कैलकुलेटर है। जोड़, घटाव, गुणा और भाग आसानी से करें।">
 
-    button {
-      padding: 12px;
-      margin: 5px;
-      border: none;
-      border-radius: 8px;
-      background: #1769ff;
-      color: white;
-      font-size: 16px;
-    }
+<meta name="robots" content="index,follow">
 
-    #result {
-      color: #1769ff;
-    }
-  </style>
+<link rel="canonical" href="https://nikhilsankrot43-ops.github.io/my-calculator-pro/">
+
+<meta property="og:title" content="CalcNova Hindi - Online Calculator">
+<meta property="og:description" content="Free online calculator for addition, subtraction, multiplication and division.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nikhilsankrot43-ops.github.io/my-calculator-pro/">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #080b1c;
+  color: white;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: #55e6ff;
+}
+
+header p {
+  color: #b8c5e8;
+}
+
+.container {
+  max-width: 420px;
+  margin: auto;
+}
+
+.calculator {
+  background: #151b35;
+  padding: 22px;
+  border-radius: 22px;
+  border: 1px solid #343e70;
+  box-shadow: 0 0 25px #1649a455;
+}
+
+h1 {
+  font-size: 25px;
+  text-align: center;
+  color: #ffffff;
+}
+
+input {
+  width: 100%;
+  padding: 16px;
+  margin: 10px 0;
+  border: 1px solid #39476e;
+  border-radius: 12px;
+  background: #080d22;
+  color: white;
+  font-size: 18px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 15px;
+}
+
+button {
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+.clear {
+  background: #e63946;
+}
+
+.delete {
+  background: #374151;
+}
+
+.result {
+  margin-top: 20px;
+  padding: 18px;
+  background: #080d22;
+  border-radius: 12px;
+  text-align: center;
+  color: #55e6ff;
+  font-size: 24px;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+.info {
+  margin-top: 25px;
+  padding: 20px;
+  background: #151b35;
+  border-radius: 16px;
+  line-height: 1.7;
+  color: #d5def5;
+}
+
+.info h2 {
+  color: #55e6ff;
+  font-size: 21px;
+}
+
+footer {
+  text-align: center;
+  color: #9ca3af;
+  padding: 25px 0;
+  font-size: 14px;
+}
+</style>
 </head>
+
 <body>
-  <div class="box">
-    <h2>मेरा स्मार्ट कैलकुलेटर</h2>
 
-    <input id="a" type="number" placeholder="पहला नंबर">
-    <input id="b" type="number" placeholder="दूसरा नंबर">
+<header>
+  <div class="logo">⚡ CalcNova Hindi</div>
+  <p>Free Online Smart Calculator</p>
+</header>
 
-    <div>
-      <button onclick="calc('+')">जोड़ +</button>
-      <button onclick="calc('-')">घटाव −</button>
-      <button onclick="calc('*')">गुणा ×</button>
-      <button onclick="calc('/')">भाग ÷</button>
-    </div>
+<main class="container">
 
-    <h3 id="result">उत्तर यहाँ आएगा</h3>
-  </div>
+<section class="calculator">
 
-  <script>
-    function calc(op) {
-      let a = Number(document.getElementById("a").value);
-      let b = Number(document.getElementById("b").value);
-      let answer;
+<h1>Online Calculator</h1>
 
-      if (op === "+") answer = a + b;
-      if (op === "-") answer = a - b;
-      if (op === "*") answer = a * b;
+<input type="number" id="num1"
+placeholder="पहला नंबर डालें" inputmode="decimal">
 
-      if (op === "/") {
-        if (b === 0) {
-          document.getElementById("result").innerText =
-            "शून्य से भाग नहीं दे सकते!";
-          return;
-        }
-        answer = a / b;
-      }
+<input type="number" id="num2"
+placeholder="दूसरा नंबर डालें" inputmode="decimal">
 
-      document.getElementById("result").innerText =
-        "उत्तर: " + answer;
+<div class="buttons">
+
+<button onclick="calculate('+')">जोड़ +</button>
+
+<button onclick="calculate('-')">घटाव −</button>
+
+<button onclick="calculate('*')">गुणा ×</button>
+
+<button onclick="calculate('/')">भाग ÷</button>
+
+<button class="clear" onclick="clearAll()">Clear</button>
+
+<button class="delete" onclick="deleteLast()">Delete</button>
+
+</div>
+
+<div class="result" id="result">
+उत्तर यहाँ आएगा
+</div>
+
+</section>
+
+<section class="info">
+
+<h2>CalcNova Hindi क्या है?</h2>
+
+<p>
+CalcNova Hindi एक मुफ्त ऑनलाइन कैलकुलेटर है।
+इससे आप मोबाइल या कंप्यूटर पर आसानी से
+जोड़, घटाव, गुणा और भाग कर सकते हैं।
+</p>
+
+<h2>Calculator कैसे इस्तेमाल करें?</h2>
+
+<p>
+पहले दोनों नंबर डालें। फिर जोड़, घटाव,
+गुणा या भाग का बटन दबाएँ।
+आपका उत्तर तुरंत दिखाई देगा।
+</p>
+
+<h2>उदाहरण</h2>
+
+<p>
+20 + 5 = 25<br>
+50 − 10 = 40<br>
+6 × 7 = 42<br>
+20 ÷ 4 = 5
+</p>
+
+</section>
+
+</main>
+
+<footer>
+  © 2026 CalcNova Hindi | Free Online Calculator
+</footer>
+
+<script>
+function calculate(operator) {
+
+  let a = document.getElementById("num1").value;
+  let b = document.getElementById("num2").value;
+
+  let resultBox = document.getElementById("result");
+
+  if (a === "" || b === "") {
+    resultBox.innerText = "दोनों नंबर डालें";
+    return;
+  }
+
+  a = Number(a);
+  b = Number(b);
+
+  let answer;
+
+  if (operator === "+") {
+    answer = a + b;
+  }
+  else if (operator === "-") {
+    answer = a - b;
+  }
+  else if (operator === "*") {
+    answer = a * b;
+  }
+  else if (operator === "/") {
+    if (b === 0) {
+      resultBox.innerText = "0 से भाग नहीं कर सकते";
+      return;
     }
-  </script>
+    answer = a / b;
+  }
+
+  resultBox.innerText = "उत्तर: " + answer;
+}
+
+function clearAll() {
+  document.getElementById("num1").value = "";
+  document.getElementById("num2").value = "";
+  document.getElementById("result").innerText =
+    "उत्तर यहाँ आएगा";
+}
+
+function deleteLast() {
+  let input = document.activeElement;
+
+  if (input.id === "num1" || input.id === "num2") {
+    input.value = input.value.slice(0, -1);
+  } else {
+    document.getElementById("num2").value =
+      document.getElementById("num2").value.slice(0, -1);
+  }
+}
+</script>
+
 </body>
 </html>
 
